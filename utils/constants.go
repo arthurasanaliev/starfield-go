@@ -1,0 +1,11 @@
+package utils
+
+const (
+	WINDOW_WIDTH  = 640
+	WINDOW_HEIGHT = 480
+
+	SCREEN_WIDTH  = 640
+	SCREEN_HEIGHT = 480
+
+	STAR_RADIUS = 5
+)
