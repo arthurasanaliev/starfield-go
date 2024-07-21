@@ -17,14 +17,14 @@ func main() {
 	addStars(g)
 
 	ebiten.SetWindowSize(utils.WINDOW_WIDTH, utils.WINDOW_HEIGHT)
-	ebiten.SetWindowTitle("Hello, World!")
+	ebiten.SetWindowTitle("Starfield by Arthur Asanaliev")
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func addStars(g *game.Game) {
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 50; i++ {
 		g.Stars = append(g.Stars, *game.NewStar())
 	}
 }
