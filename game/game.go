@@ -29,7 +29,7 @@ func (g *Game) Update() error {
 		g.Stars[i].y += stepY
 
 		// TODO: modify radius-increase mechanism
-		g.Stars[i].r += float32(math.Max(math.Abs(float64(stepX)), math.Abs(float64(stepY))) / 40.0)
+		g.Stars[i].r += float32(math.Max(math.Abs(float64(stepX)), math.Abs(float64(stepY))) / 50.0)
 		if outOfBounds(g.Stars[i].x, g.Stars[i].y, g.Stars[i].r) {
 			g.Stars[i].x = g.Stars[i].r + rand.Float32()*(utils.SCREEN_WIDTH-g.Stars[i].r)
 			g.Stars[i].y = g.Stars[i].r + rand.Float32()*(utils.SCREEN_HEIGHT-g.Stars[i].r)
@@ -38,7 +38,7 @@ func (g *Game) Update() error {
 		}
 
 		// TODO: modify z-decrease mechanism
-		g.Stars[i].z -= 1.2
+		g.Stars[i].z -= 0.5
 		if g.Stars[i].z < utils.MIN_Z {
 			g.Stars[i].z = 1.2
 		}
