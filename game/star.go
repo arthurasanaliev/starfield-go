@@ -14,7 +14,7 @@ type Star struct {
 }
 
 func NewStar() *Star {
-	r := float32(3)
+	r := utils.STAR_RADIUS
 	x := r + rand.Float32()*(utils.SCREEN_WIDTH-r)
 	y := r + rand.Float32()*(utils.SCREEN_HEIGHT-r)
 	z := utils.MAX_Z

@@ -2,6 +2,7 @@ package game
 
 import (
 	"image/color"
+	"math"
 	"math/rand"
 
 	"github.com/arthurasanaliev/starfield-go/utils"
@@ -26,15 +27,17 @@ func (g *Game) Update() error {
 
 		g.Stars[i].x += stepX
 		g.Stars[i].y += stepY
+		g.Stars[i].r += float32(math.Max(math.Abs(float64(stepX)), math.Abs(float64(stepY))) / 40.0)
 		if outOfBounds(g.Stars[i].x, g.Stars[i].y, g.Stars[i].r) {
 			g.Stars[i].x = g.Stars[i].r + rand.Float32()*(utils.SCREEN_WIDTH-g.Stars[i].r)
 			g.Stars[i].y = g.Stars[i].r + rand.Float32()*(utils.SCREEN_HEIGHT-g.Stars[i].r)
 			g.Stars[i].z = utils.MAX_Z
+			g.Stars[i].r = utils.STAR_RADIUS
 		}
 
-		g.Stars[i].z -= 1.3
+		g.Stars[i].z -= 1.2
 		if g.Stars[i].z < utils.MIN_Z {
-			g.Stars[i].z = utils.MAX_Z
+			g.Stars[i].z = 1.2
 		}
 	}
 	return nil
