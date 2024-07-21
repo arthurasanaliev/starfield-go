@@ -9,4 +9,10 @@ const (
 
 	STAR_RADIUS = 4
 	STAR_SPEED  = 1
+
+	MAX_Z = float32(120)
+	MIN_Z = float32(1)
+
+	CENTER_WIDTH  = SCREEN_WIDTH / 2.0
+	CENTER_HEIGHT = SCREEN_HEIGHT / 2.0
 )

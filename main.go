@@ -24,7 +24,7 @@ func main() {
 }
 
 func addStars(g *game.Game) {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 100; i++ {
 		g.Stars = append(g.Stars, *game.NewStar())
 	}
 }

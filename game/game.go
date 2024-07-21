@@ -18,12 +18,21 @@ func NewGame() *Game {
 
 func (g *Game) Update() error {
 	for i := range g.Stars {
-		g.Stars[i].x += utils.STAR_SPEED
-		if g.Stars[i].x > utils.SCREEN_WIDTH+utils.STAR_RADIUS {
-			g.Stars[i].x = -utils.STAR_RADIUS
+		translatedX, translatedY := translateCoordinates(g.Stars[i].x, g.Stars[i].y)
+		stepX := translatedX / g.Stars[i].z
+		stepY := translatedY / g.Stars[i].z
+		g.Stars[i].x += stepX
+		g.Stars[i].y += stepY
+		g.Stars[i].z -= 1
+		if g.Stars[i].z < utils.MIN_Z {
+			g.Stars[i].z = utils.MAX_Z
 		}
 	}
 	return nil
+}
+
+func translateCoordinates(x, y float32) (float32, float32) {
+	return x - utils.CENTER_WIDTH, y - utils.CENTER_HEIGHT
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
