@@ -7,6 +7,7 @@ import (
 )
 
 type Star struct {
+	// TODO: add color (or image)
 	x float32
 	y float32
 	z float32
