@@ -26,9 +26,9 @@ func (g *Game) Update() error {
 
 		g.Stars[i].x += stepX
 		g.Stars[i].y += stepY
-		if outOfBounds(g.Stars[i].x, g.Stars[i].y) {
-			g.Stars[i].x = utils.STAR_RADIUS + rand.Float32()*(utils.SCREEN_WIDTH-utils.STAR_RADIUS)
-			g.Stars[i].y = utils.STAR_RADIUS + rand.Float32()*(utils.SCREEN_HEIGHT-utils.STAR_RADIUS)
+		if outOfBounds(g.Stars[i].x, g.Stars[i].y, g.Stars[i].r) {
+			g.Stars[i].x = g.Stars[i].r + rand.Float32()*(utils.SCREEN_WIDTH-g.Stars[i].r)
+			g.Stars[i].y = g.Stars[i].r + rand.Float32()*(utils.SCREEN_HEIGHT-g.Stars[i].r)
 			g.Stars[i].z = utils.MAX_Z
 		}
 
@@ -42,7 +42,7 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	for _, star := range g.Stars {
-		vector.DrawFilledCircle(screen, float32(star.x), float32(star.y), float32(utils.STAR_RADIUS), color.White, false)
+		vector.DrawFilledCircle(screen, star.x, star.y, star.r, color.White, false)
 	}
 }
 
@@ -54,11 +54,11 @@ func translateCoordinates(x, y float32) (float32, float32) {
 	return x - utils.CENTER_WIDTH, y - utils.CENTER_HEIGHT
 }
 
-func outOfBounds(x, y float32) bool {
-	if x < -utils.STAR_RADIUS || x > utils.SCREEN_WIDTH+utils.STAR_RADIUS {
+func outOfBounds(x, y, r float32) bool {
+	if x < -r || x > utils.SCREEN_WIDTH+r {
 		return true
 	}
-	if y < -utils.STAR_RADIUS || y > utils.SCREEN_HEIGHT+utils.STAR_RADIUS {
+	if y < -r || y > utils.SCREEN_HEIGHT+r {
 		return true
 	}
 	return false

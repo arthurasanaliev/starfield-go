@@ -7,9 +7,6 @@ const (
 	SCREEN_WIDTH  = 1920
 	SCREEN_HEIGHT = 1080
 
-	STAR_RADIUS = 5
-	STAR_SPEED  = 1
-
 	MAX_Z = float32(150)
 	MIN_Z = float32(1)
 
