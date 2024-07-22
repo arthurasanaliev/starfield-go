@@ -38,7 +38,7 @@ func (g *Game) Update() error {
 		}
 
 		// TODO: modify z-decrease mechanism
-		g.Stars[i].z -= 0.5
+		g.Stars[i].z -= 0.7
 		if g.Stars[i].z < utils.MIN_Z {
 			g.Stars[i].z = 1.2
 		}
